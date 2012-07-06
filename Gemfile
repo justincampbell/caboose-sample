@@ -1,38 +1,49 @@
-source 'https://rubygems.org'
+source :rubygems
 
-gem 'rails', '3.2.6'
+gem 'rails'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'heroku'
+gem 'jquery-rails'
+gem 'newrelic_rpm'
+gem 'rake'
+gem 'slim-rails'
+gem 'thin'
 
-gem 'sqlite3'
-
-
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
+  gem 'bourbon'
+  gem 'coffee-rails'
+  gem 'sass-rails'
+  gem 'uglifier'
 end
 
-gem 'jquery-rails'
+group :production do
+  gem 'dalli'
+  gem 'pg'
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'sqlite3'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+  group :guard do
+    gem 'guard-cucumber'
+    gem 'guard-rspec'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+    group :darwin do
+      gem 'rb-fsevent'
+      gem 'growl'
+    end
+  end
+end
 
-# Deploy with Capistrano
-# gem 'capistrano'
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  #gem 'fabricator'
+  gem 'fivemat'
+  gem 'simplecov'
+  #gem 'timecop'
+  gem 'turnip'
+  #gem 'vcr'
+end
 
-# To use debugger
-# gem 'debugger'
